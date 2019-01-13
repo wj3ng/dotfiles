@@ -1,0 +1,73 @@
+# WORKSPACES
+
+Mod + {0-9}             Switch to workspace
+Mod + Shift + {0-9}     Move window to workspace
+
+Mod + <                 Move workspace to left monitor
+Mod + >                 Move workspace to right monitor
+
+
+# Windows
+
+Mod + {hjkl}            Move focus
+Mod + Shift + {hjkl}    Move window
+
+Mod + v                 Split orientation vertical
+Mod + Shift + v         Split orientation horizontal
+
+Mod + {yuio}            Resize window (small increments)
+Mod + Shift + {yuio}    Resize window (large increments)
+
+Mod + a					Focus child
+Mod + Shift + a			Focus parent
+
+
+# Floating Windows
+
+Mod + Shift             Toggle focus tiling/floating
+Mod + Shift + Space     Toggle window tiling/floating
+
+Mod + Mouse1            Drag floating window
+Mod + Mouse2            Resize floating window
+Mod + s                 Toggle sticky floating window
+
+Mod + f                 Toggle fullscreen
+Mod + Shift + q         Kill window
+
+
+# Applications
+
+Mod + Enter             New terminal window
+Mod + d                 Launch run menu
+Mod + Tab               Launch window switcher
+Mod + PrtSc             Take screenshot
+
+Mod + x                 Show/hide scratchpad
+
+
+# Power settings
+
+Mod + Shift + p         Launch power options menu =====================
+Mod + Shift + m         Launch monitor layouts menu =====================
+
+Mod + Del               Lock screen
+
+
+# i3
+
+Mod + Shift + c         Reload config  ======SHOW NOTIFICATION========
+Mod + Esc               Restart i3 ======SHOW NOTIFICATION========
+Mod + Shift + Esc       Exit i3 =======================
+
+
+# Gaps
+
+Mod + -                 Shrink inner gap
+Mod + =                 Grow inner gap
+Mod + Shift + -         Shrink outer gap
+Mod + Shift + =         Grow outer gap
+Mod + [                 Revert gap sizes to default
+Mod + ]                 Set gap sizes to 0
+
+
+Mod + ?                 Launch help menu ===========================

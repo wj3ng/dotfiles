@@ -1,0 +1,25 @@
+rofi.color-enabled:                  true
+
+! Window: ‘background’, ‘border’, ‘separator’
+rofi.color-window:                   argb:ee222222,  #4B88D8,  #4B88D8
+
+! State: ‘bg’, ‘fg’, ‘altbg’, ‘hlbg’, hlfg
+rofi.color-normal:                   argb:00000000,  #dfdfdf , argb:00000000,  argb:00000000, #4B88D8
+rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  argb:00000000, #F99157
+rofi.color-active:                   argb:00000000,  #dfdfdf , argb:00000000,  argb:00000000, #4B88D8
+
+rofi.font: Inconsolata 12
+rofi.width: 25
+rofi.padding: 30
+rofi.border: 1px
+rofi.line-margin: 6
+rofi.lines: 8
+rofi.separator-style: solid 
+rofi.columns: 2
+rofi.bw: 2
+rofi.eh: 1
+rofi.hide-scrollbar: false 
+rofi.scrollbar-width: 5
+rofi.auto-select: false
+
+rofi.disable-history: true
