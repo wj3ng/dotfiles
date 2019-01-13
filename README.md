@@ -2,7 +2,9 @@
 
 Welcome to my dotfiles I use on my Arch Linux laptop.
 
-These might be a bit messy. I try to keep them tidy, but my laziness sometimes gets the better of me.
+These might be a bit messy. I try to keep them tidy, but my laziness sometimes gets the better of me. Also, some of these configs and scripts are personalized for myself, and might not be useful for anyone else.
+
+The file structure of this repo is not accurate, so don't try to copy everything directly to your home folder.
 
 ## Configs present here
 - i3 (i3-gaps-next-git) (windows manager)
@@ -18,6 +20,7 @@ These might be a bit messy. I try to keep them tidy, but my laziness sometimes g
 ## Other programs I use
 Programs I use that I didn't configure. Obviously not all of them, just the ones I thought was worth mentioning.
 - Google Chrome (web browser)
+	- Vimium (plugin to use vim keybinds)
 - Spotify (music streaming)
 - Atom (GUI text editor)
 - VLC (media player)
