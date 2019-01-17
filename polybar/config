@@ -1,0 +1,592 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+top-background = #00ffffff
+top-foreground = #000000
+
+bottom-background = #00ffffff
+bottom-foreground = #ffffff
+
+primary = #ffb52a
+secondary = #e60053
+shaded = #15ffffff
+alert = #bd2c40
+highlight = #D9583C
+
+;=================================================================
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+;=================================================================
+
+[bar/ricebar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 3
+radius = 0.0
+fixed-center = true
+
+background = #00262626
+foreground = #000000
+
+line-size = 0
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = InconsolataGo\ Nerd\ Font:bold:size=10;2
+
+wm-restack = i3
+override-redirect = true
+
+modules-left = i3 music
+modules-center = date weather
+modules-right = lockstatus pacman cpu wlan eth battery backlight volume powermenu 
+
+;================================================================
+
+[bar/topbar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 3
+radius = 0.0
+fixed-center = true
+
+background = ${colors.top-background}
+foreground = ${colors.top-foreground}
+
+line-size = 1
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 1
+
+font-0 = InconsolataGo\ Nerd\ Font:bold:size=10;2
+font-2 = Font\ Awesome\ 5\ Free:size=10;2
+font-3 = Font\ Awesome\ 5\ Free\ Solid:size=10;2
+font-4 = Font\ Awesome\ 5\ Brands:size=10;2
+font-5 = Noto\ Color\ Emoji:size=5;2
+
+modules-left = i3 music
+modules-center = date weather
+modules-right = lockstatus pacman cpu wlan eth battery backlight volume powermenu 
+
+wm-restack = i3
+
+override-redirect = true
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+;=================================================================
+
+[bar/bottombar]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 3
+radius = 0.0
+fixed-center = true
+bottom = true
+
+background = ${colors.bottom-background}
+foreground = ${colors.bottom-foreground}
+
+line-size = 0
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Inconsolata\ Nerd\ Font:size=10;2
+font-1 = Material\ Icons:size=10;2
+font-2 = Font\ Awesome\ 5\ Free:size=10;2
+font-3 = Font\ Awesome\ 5\ Free\ Solid:size=10;2
+font-4 = Font\ Awesome\ 5\ Brands:size=10;2
+
+modules-left = music
+modules-center = 
+modules-right = 
+
+override-redirect = true
+wm-restack = i3
+
+tray-position = right
+tray-padding = 4
+tray-background = #50000000
+tray-detached = true
+
+;=================================================================
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:80:...%
+
+;=================================================================
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${bar/bottombar.foreground}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+;=================================================================
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#ffffff}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${bar/bottombar.foreground}
+
+;=================================================================
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = %index%!
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${bar/bottombar.foreground}
+label-empty-padding = 1
+
+;=================================================================
+
+[module/i3]
+type = internal/i3
+format =  <label-state> <label-mode>
+index-sort = false
+
+enable-click = true
+enable-scroll = true 
+wrapping-scroll = true 
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = ${bar/bottombar.foreground}
+label-mode-background = ${bar/bottombar.background}
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-font = 1
+;label-focused-background = #30ffffff
+label-focused-underline = #000000
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-font = 1
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%
+;label-visible-background = #50ffffff
+label-visible-underline = #000000
+label-visible-padding = 1
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%!
+label-urgent-font = 1
+label-urgent-foreground = ${module/bspwm.label-urgent-foreground}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
+ws-icon-9 = 10;0
+;ws-icon-default =
+
+;=================================================================
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+;=================================================================
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+format = <ramp> <label>
+label = %percentage%%
+
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-3 = 
+;ramp-4 = 
+;ramp-5 = 
+;ramp-6 = 
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-font = 0
+
+bar-width = 10
+bar-indicator = 
+bar-indicator-foreground = #000000
+bar-indicator-font = 0
+bar-fill = 
+bar-fill-font = 0
+bar-fill-foreground = #000000
+bar-empty = 
+bar-empty-font = 0
+bar-empty-foreground = ${bar/topbar.foreground}
+
+;=================================================================
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = -
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = -
+bar-empty-font = 2
+bar-empty-foreground = ${bar/topbar.foreground}
+
+;=================================================================
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+;=================================================================
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+label = %percentage%%
+
+;=================================================================
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${bar/bottombar.foreground}
+;format-underline = #4bffdc
+label = %percentage_used%%
+
+;=================================================================
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-prefix = 1
+label-connected = %essid%
+
+;format-disconnected-prefix = "直 "
+;format-disconnected-prefix-font = 1
+;format-disconnected = no network
+format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+
+label-disconnected = "睊"
+label-disconnected-font = 1
+
+ramp-signal-0 = 直 
+ramp-signal-1 = 直 
+ramp-signal-2 = 直 
+ramp-signal-font = 1
+
+;=================================================================
+
+[module/eth]
+type = internal/network
+interface = enp2s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${bar/topbar.foreground}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${bar/topbar.foreground}
+
+;=================================================================
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%a %b %d"
+date-alt = "%A, %B %d %Y"
+
+time = "%I:%M %p"
+time-alt = "%I:%M:%S %p"
+
+format-prefix-foreground = ${bar/topbar.foreground}
+
+format = <label>
+label =  %date%    %time%
+;label = %date%  %time%
+label-font = 0
+
+;=================================================================
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+format-muted-prefix = "婢"
+label-muted = " -- "
+label-muted-font = 1
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #000000
+bar-volume-foreground-1 = #000000
+bar-volume-foreground-2 = #000000
+bar-volume-foreground-3 = #000000
+bar-volume-foreground-4 = #000000
+bar-volume-foreground-5 = #000000
+bar-volume-foreground-6 = #000000
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 4
+bar-volume-indicator-foreground = #000000
+bar-volume-fill = 
+bar-volume-fill-font = 4
+bar-volume-empty = 
+bar-volume-empty-font = 4
+bar-volume-empty-foreground = ${bar/topbar.foreground}
+
+;=================================================================
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+
+format-discharging = <ramp-capacity> <label-discharging>
+
+format-full = <label-full> 100%
+
+label-full = ""
+
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+ramp-capacity-5 = ""
+ramp-capacity-6 = ""
+ramp-capacity-7 = ""
+ramp-capacity-8 = ""
+ramp-capacity-9 = ""
+ramp-capacity-10 = ""
+ramp-capacity-11 = ""
+
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+animation-charging-5 = ""
+animation-charging-6 = ""
+animation-charging-7 = ""
+animation-charging-8 = ""
+animation-charging-9 = ""
+animation-charging-10 = ""
+animation-charging-11 = ""
+animation-charging-framerate = 200
+;animation-charging-foreground = #33cc33
+;animation-charging-underline = #33cc33
+
+;=================================================================
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 70
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = #CA407E
+
+ramp-0 = 
+ramp-font = 3
+ramp-foreground = ${bar/bottombar.foreground}
+
+;=================================================================
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-padding = 0
+
+label-close = 
+label-close-padding = 0
+
+label-separator = |
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-close
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-close
+
+;=================================================================
+
+[module/weather]
+type = custom/script
+interval = 600
+format = <label>
+label-font = 0,6
+exec = ~/.config/polybar/weather.sh m f
+
+;=================================================================
+
+[module/lockstatus]
+type = custom/script
+interval = 0.5
+format = <label>
+label-font = 0,6
+exec = ~/.config/polybar/lockstatus.sh
+
+;=================================================================
+
+[module/music]
+type = custom/script
+interval = 1
+
+;label = %output:0:50:...%
+label = %output%
+exec = ~/.config/polybar/music.sh
+click-left = playerctl previous
+click-middle = playerctl play-pause
+click-right = playerctl next
+
+;=================================================================
+
+[module/pacman]
+type = custom/script
+exec = ~/.config/polybar/pacman.sh
+interval = 300
+
+;=================================================================
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+; vim:ft=dosini
+

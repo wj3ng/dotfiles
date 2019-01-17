@@ -15,6 +15,7 @@ The file structure of this repo is not accurate, so don't try to copy everything
 ## Configs present here
 - i3 (i3-gaps-next-git) (windows manager)
 - vim (text editor)
+- zsh (shell)
 - ranger (file manager)
 	- file icons
 - neofetch (displays system information)
