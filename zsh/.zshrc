@@ -14,7 +14,7 @@ ZSH_THEME="agnoster"
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ ZSH_THEME_RANDOM_CANDIDATES=( "gallois" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -61,6 +61,8 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   zsh-syntax-highlighting
+  vi-mode
+  npm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,8 +108,8 @@ stty -ixoff
 # disable touchscreen
 xinput disable 'ELAN Touchscreen'
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 export PATH=/home/wjeng/.gem/ruby/2.5.0/bin:$PATH
 

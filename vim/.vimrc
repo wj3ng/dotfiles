@@ -25,11 +25,15 @@ Plugin 'octol/vim-cpp-enhanced-highlight'	" syntax highlighting for c++
 Plugin 'mboughaba/i3config.vim'				" syntax highlighting for i3 config
 Plugin 'digitaltoad/vim-pug'				" syntax highlighting for pug (jade)
 
+Plugin 'ap/vim-css-color'
+
 Plugin 'tyrannicaltoucan/vim-quantum'		" quantum colorscheme
 
 Plugin 'junegunn/goyo.vim'					" distraction free viewing
 
 Plugin 'jiangmiao/auto-pairs'				" bracket autocomplete
+
+Plugin 'lervag/vimtex'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,3 +114,5 @@ map <leader>g :Goyo \| set linebreak<CR>
 set ttimeout
 set ttimeoutlen=100
 set timeoutlen=3000
+
+let g:vimtex_view_method='zathura'

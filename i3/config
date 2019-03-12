@@ -10,7 +10,7 @@
 
 gaps inner 10
 gaps outer 5
-gaps top 12
+gaps top 10
 gaps bottom 0
 
 set $mod		Mod4
@@ -64,7 +64,7 @@ bindsym $mod+minus				gaps inner current minus 5
 bindsym $mod+Shift+plus			gaps outer current plus 5
 bindsym $mod+Shift+minus		gaps outer current minus 5
 
-bindsym $mod+bracketleft		gaps inner all set 10; gaps outer all set 5; gaps top all set 12; gaps bottom all set 0
+bindsym $mod+bracketleft		gaps inner all set 10; gaps outer all set 5; gaps top all set 10; gaps bottom all set 0
 bindsym $mod+bracketright		gaps inner all set 0; gaps outer all set 0
 
 bindsym $mod+y					resize shrink width 25 px or 1 ppt
